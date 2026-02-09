@@ -7,11 +7,10 @@
 </head>
 <body>
 <h2>🚨 แจ้งเหตุฉุกเฉิน</h2>
-
-<button onclick="sendAlert()">แจ้งเหตุ</button>
+<button id="btn">แจ้งเหตุ</button>
 
 <script>
-async function sendAlert() {
+document.getElementById("btn").onclick = async () => {
   await liff.init({ liffId: "2009090447-Nq66YDbS" });
 
   if (!liff.isLoggedIn()) {
@@ -19,13 +18,12 @@ async function sendAlert() {
     return;
   }
 
-  await liff.sendMessages([{
-    type: "text",
-    text: "🚨 แจ้งเหตุจากการสแกน QR Code"
-  }]);
+  await liff.sendMessages([
+    { type: "text", text: "🚨 แจ้งเหตุจาก QR Code" }
+  ]);
 
   alert("ส่งแจ้งเตือนแล้ว");
-}
+};
 </script>
 </body>
 </html>
